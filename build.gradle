@@ -27,7 +27,7 @@ minecraft {
 }
 
 dependencies {
-    deobfProvided 'curse.maven:troll-ores-reborn-246037:2537580'
+    deobfCompile 'curse.maven:troll-ores-reborn-246037:2537580'
 }
 
 repositories {

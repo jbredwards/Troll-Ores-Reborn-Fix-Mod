@@ -1,0 +1,2 @@
+config.tor_fix.blacklist=Troll Ores Blacklist
+config.tor_fix.blacklist.tooltip=Follows the same format as the Troll Ores Reborn whitelist.

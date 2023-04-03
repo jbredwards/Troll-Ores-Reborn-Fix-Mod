@@ -1,6 +1,7 @@
 package git.jbredwards.tor_fix;
 
 import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -21,7 +22,7 @@ import java.util.List;
 public final class TrollOresRebornFixConfigHandler
 {
     @Nonnull
-    @Config.LangKey("config.tor.blacklist")
+    @Config.LangKey("config.tor_fix.blacklist")
     public static String[] blacklist = new String[0];
 
     @Nonnull
@@ -33,6 +34,7 @@ public final class TrollOresRebornFixConfigHandler
         if(event.getModID().equals("tor_fix")) {
             BLACKLIST.clear();
             BLACKLIST.addAll(Arrays.asList(blacklist));
+            ConfigManager.sync("tor_fix", Config.Type.INSTANCE);
         }
     }
 }
