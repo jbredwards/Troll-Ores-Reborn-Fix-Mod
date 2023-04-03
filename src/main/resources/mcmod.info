@@ -1,0 +1,16 @@
+[
+{
+  "modid": "tor_fix",
+  "name": "Troll Ores Reborn Fix",
+  "description": "Adds a blacklist to the Troll Ores Reborn mod, also provides various fixes & optimizations for the mod!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["jbredwards"],
+  "credits": "jbredwards",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
