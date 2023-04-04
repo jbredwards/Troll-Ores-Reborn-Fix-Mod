@@ -39,7 +39,7 @@ import java.util.Map;
  *
  */
 @Mod.EventBusSubscriber
-@Mod(modid = "tor_fix", name = "Troll Ores Reborn Fix", version = "1.0.0", dependencies = "required-after:tor@[4.2.16,)", serverSideOnly = true)
+@Mod(modid = "tor_fix", name = "Troll Ores Reborn Fix", version = "1.0.0", dependencies = "required-after:tor@[4.2.16,)")
 public final class TrollOresRebornFix
 {
     @Mod.EventHandler
@@ -72,15 +72,13 @@ public final class TrollOresRebornFix
 
                             final IItemHandler wrapper = new ItemStackHandler(entity.inventory);
                             event.getDrops().forEach(stack -> ItemHandlerHelper.insertItemStacked(wrapper, stack, false));
-                            event.setDropChance(0);
+                            event.getDrops().clear();
                         }
 
                         world.spawnEntity(entity);
                         final BlockPos entityPos = new BlockPos(entity);
-                        entity.onInitialSpawn(world.getDifficultyForLocation(entityPos), null);
-
-                        //break surrounding blocks
                         if(i == 0) breakSurroundingBlocks(entity.getEntityBoundingBox(), entityPos, world);
+                        entity.onInitialSpawn(world.getDifficultyForLocation(entityPos), null);
                     }
                 }
                 //spawn wither
@@ -129,7 +127,10 @@ public final class TrollOresRebornFix
                 for(int z = mZ; z < bb.maxZ; z++) {
                     final BlockPos pos = new BlockPos(x, y, z);
                     if(!origin.equals(pos)) {
-                        final float hardness = world.getBlockState(pos).getBlockHardness(world, pos);
+                        final IBlockState state = world.getBlockState(pos);
+                        if(state.getBlock().hasTileEntity(state)) continue;
+
+                        final float hardness = state.getBlockHardness(world, pos);
                         if(hardness != -1 && hardness < ConfigHandler.BLOCK_HARDNESS) world.destroyBlock(pos, true);
                     }
                 }

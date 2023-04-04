@@ -15,7 +15,7 @@ apply plugin: 'com.matthewprenger.cursegradle'
 apply plugin: 'maven-publish'
 
 version = 'v1.0.0-mc1.12.2'
-group = 'git.jbredwards.trolloresreborn_fix'
+group = 'git.jbredwards.tor_fix'
 archivesBaseName = 'trolloresreborn-fix'
 sourceCompatibility = targetCompatibility = '1.8'
 
